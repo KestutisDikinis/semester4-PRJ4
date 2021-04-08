@@ -1,9 +1,9 @@
 import {Client} from '@loopback/testlab';
-import {BackendApplication} from '../..';
+import {Prj4BackendApplication} from '../..';
 import {setupApplication} from './test-helper';
 
 describe('HomePage', () => {
-  let app: BackendApplication;
+  let app: Prj4BackendApplication;
   let client: Client;
 
   before('setupApplication', async () => {

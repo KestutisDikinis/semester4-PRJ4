@@ -27,6 +27,17 @@ export class UserProfile extends Entity {
   })
   PASS: string;
 
+  @property({
+    type: 'string',
+    required: false,
+  })
+  FIRSTNAME: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  LASTNAME: string;
 
   constructor(data?: Partial<UserProfile>) {
     super(data);

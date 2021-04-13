@@ -4,18 +4,22 @@ import {
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
+  del, get,
+  getModelSchemaRef, param,
+
+
+  patch, post,
+
+
+
+
   put,
-  del,
+
   requestBody,
-  response,
+  response
 } from '@loopback/rest';
 import {UserProfile} from '../models';
 import {UserProfileRepository} from '../repositories';
@@ -23,8 +27,8 @@ import {UserProfileRepository} from '../repositories';
 export class Prj4ControllerController {
   constructor(
     @repository(UserProfileRepository)
-    public userProfileRepository : UserProfileRepository,
-  ) {}
+    public userProfileRepository: UserProfileRepository,
+  ) { }
 
   @post('/user-profiles')
   @response(200, {
@@ -44,6 +48,8 @@ export class Prj4ControllerController {
     })
     userProfile: Omit<UserProfile, 'ID'>,
   ): Promise<UserProfile> {
+    var CryptoJS = require("crypto-js");
+    userProfile.PASS = CryptoJS.SHA256(userProfile.PASS);
     return this.userProfileRepository.create(userProfile);
   }
 

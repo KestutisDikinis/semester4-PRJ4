@@ -13,14 +13,27 @@ struct start: View {
         VStack {
             Text("Ready to bike?")
             NavigationView{
-                NavigationLink(destination: Registration()) {
-                    Text("Sign-Up")
+                VStack{
+                    NavigationLink(destination: Registration()) {
+                    Text("Login")
                         .foregroundColor(Color.white)
                         .padding(12)
                         .background(Color.orange)
+                    
+                    }
+                    .cornerRadius(12)
+                    NavigationLink(destination: Registration()) {
+                        Text("Sign-Up")
+                            .foregroundColor(Color.white)
+                            .padding(12)
+                            .background(Color.orange)
+                    }
+                    .cornerRadius(12)
                 }
-                .cornerRadius(12)
             }
+            
+            
+            
         }
     }
 }

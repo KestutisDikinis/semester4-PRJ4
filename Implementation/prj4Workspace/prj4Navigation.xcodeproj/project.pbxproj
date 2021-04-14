@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FE8F9B026270E9B00F2F8B9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8F9AF26270E9B00F2F8B9 /* Login.swift */; };
 		9714DCC02626C78B00AABB21 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714DCBE2626C78A00AABB21 /* Registration.swift */; };
 		9714DCC12626C78B00AABB21 /* start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714DCBF2626C78B00AABB21 /* start.swift */; };
 		9714DCCE2626D29500AABB21 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714DCCD2626D29500AABB21 /* Profile.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2FE8F9AF26270E9B00F2F8B9 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		9714DCBE2626C78A00AABB21 /* Registration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		9714DCBF2626C78B00AABB21 /* start.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = start.swift; sourceTree = "<group>"; };
 		9714DCCD2626D29500AABB21 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				9714DCBF2626C78B00AABB21 /* start.swift */,
 				9714DCCD2626D29500AABB21 /* Profile.swift */,
 				AD1057512506826B00100993 /* Preview Content */,
+				2FE8F9AF26270E9B00F2F8B9 /* Login.swift */,
 			);
 			path = prj4Navigation;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				9714DCC12626C78B00AABB21 /* start.swift in Sources */,
 				9714DCCE2626D29500AABB21 /* Profile.swift in Sources */,
 				AD10574E2506826A00100993 /* ContentView.swift in Sources */,
+				2FE8F9B026270E9B00F2F8B9 /* Login.swift in Sources */,
 				9714DCC02626C78B00AABB21 /* Registration.swift in Sources */,
 				AD10574C2506826A00100993 /* prj4NavigationApp.swift in Sources */,
 			);

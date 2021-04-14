@@ -34,10 +34,11 @@ struct profileTest: View {
             //for swiping between pages functionality
             ZStack{
                 TabView{
-                    
                     //Embedded form for styling the HStacks
+                    //Profile info section
                     Form {
                         //Added sections for spacing between other sections and naming groups
+
                         Section(header: Text("PROFILE INFORMATION")){
                             HStack{
                                 Text("First Name")
@@ -83,9 +84,62 @@ struct profileTest: View {
                             }
                         }
                     }
+                    //History group
                     Form {
-                        Section{
-                            Text("TestTest")
+                        //Section name
+                        Section(header: Text("ROUTES HISTORY")){
+                            //Spacing between each route entry
+                            HStack{
+                                Image("route")
+                                    .resizable()
+                                    .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                                    .frame(width: 60, height: 60)
+                                    .clipped()
+                                    .cornerRadius(10)
+                                VStack(alignment: .leading){
+                                    Text("TITLE + description")
+                                        .font(.system(size: 18, weight: .medium, design: .default))
+                                        .offset(y:5)
+                                    Text("89km")
+                                        .offset(y:20)
+                                    Text("21.2.2021")
+                                        .offset(x:175)
+                                }
+                            }
+                            HStack{
+                                Image("route")
+                                    .resizable()
+                                    .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                                    .frame(width: 60, height: 60)
+                                    .clipped()
+                                    .cornerRadius(10)
+                                VStack(alignment: .leading){
+                                    Text("TITLE + description")
+                                        .font(.system(size: 18, weight: .medium, design: .default))
+                                        .offset(y:5)
+                                    Text("89km")
+                                        .offset(y:20)
+                                    Text("21.2.2021")
+                                        .offset(x:175)
+                                }
+                            }
+                            HStack{
+                                Image("route")
+                                    .resizable()
+                                    .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                                    .frame(width: 60, height: 60)
+                                    .clipped()
+                                    .cornerRadius(10)
+                                VStack(alignment: .leading){
+                                    Text("TITLE + description")
+                                        .font(.system(size: 18, weight: .medium, design: .default))
+                                        .offset(y:5)
+                                    Text("89km")
+                                        .offset(y:20)
+                                    Text("21.2.2021")
+                                        .offset(x:175)
+                                }
+                            }
                         }
                     }
                 

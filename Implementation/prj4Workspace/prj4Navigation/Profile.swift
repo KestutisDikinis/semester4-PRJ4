@@ -7,8 +7,10 @@
 
 import SwiftUI
 
+//container view that shows all the content
 struct profileTest: View {
     var body: some View {
+        //Vertical container that holds all elements
         VStack{
             Image("mark")
                 .resizable()
@@ -26,8 +28,9 @@ struct profileTest: View {
             Text("Venlo")
                 .font(.system(size: 15, design: .default))
                 .frame(alignment: .center);
-
+            //Embedded form for styling the HStacks
             Form {
+                //Added sections for spacing between other sections and naming groups
                 Section(header: Text("PROFILE INFORMATION")){
                     HStack{
                         Text("First Name")
@@ -66,6 +69,7 @@ struct profileTest: View {
                     }
                 }
                 Section{
+                    //Added action button for user to interact with
                     Button(action:  {
                             print("Edit Profile Information")
                     }) {Text("Edit Profile Information")
@@ -76,6 +80,7 @@ struct profileTest: View {
     }
 }
 
+//Renders the code avove in a preview window
 struct Profile_Previews: PreviewProvider {
     static var previews: some View {
         profileTest()

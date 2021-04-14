@@ -1,6 +1,8 @@
 
 
 import SwiftUI
+import UIKit
+import MapKit
 
 /*Tab view for prj4
  Does not need to reload pages
@@ -38,7 +40,7 @@ struct Home : View {
                     Text("Rankings")
                     .opacity(selectedTab == "Rankings" ? 1 : 0)
                     
-                    Text("Navigation")
+                    Text("Navigation hi")
                         .opacity(selectedTab == "Navigation" ? 1 : 0)
                     
                     Text("Profile")
@@ -146,3 +148,7 @@ class ModelView : ObservableObject{
         isProfileLoad = true
     }
 }
+
+
+
+

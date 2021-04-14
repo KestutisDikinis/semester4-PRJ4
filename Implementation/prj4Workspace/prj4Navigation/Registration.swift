@@ -50,7 +50,7 @@ struct Registration: View {
                     .border(Color.orange)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 Toggle(isOn: $terms) {
-                    Text("Hereby i accept the terms of servicce")
+                    Text("Hereby I accept the Terms of Service")
                 }
                 .toggleStyle(SwitchToggleStyle(tint: Color.orange))
             }

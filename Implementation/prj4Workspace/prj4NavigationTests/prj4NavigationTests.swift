@@ -2,7 +2,7 @@
 //
 
 import XCTest
-@testable import Tab_Bar
+@testable import prj4Navigation
 
 class Tab_BarTests: XCTestCase {
 

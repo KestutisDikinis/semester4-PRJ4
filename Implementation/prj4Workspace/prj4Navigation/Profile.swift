@@ -28,54 +28,72 @@ struct profileTest: View {
             Text("Venlo")
                 .font(.system(size: 15, design: .default))
                 .frame(alignment: .center);
-            //Embedded form for styling the HStacks
-            Form {
-                //Added sections for spacing between other sections and naming groups
-                Section(header: Text("PROFILE INFORMATION")){
-                    HStack{
-                        Text("First Name")
-                        Spacer()
-                        Text("Marek")
-                            .foregroundColor(.gray)
-                            .font(.callout)
+            
+            Text("Nav. bar placeholder")
+            
+            //for swiping between pages functionality
+            ZStack{
+                TabView{
+                    
+                    //Embedded form for styling the HStacks
+                    Form {
+                        //Added sections for spacing between other sections and naming groups
+                        Section(header: Text("PROFILE INFORMATION")){
+                            HStack{
+                                Text("First Name")
+                                Spacer()
+                                Text("Marek")
+                                    .foregroundColor(.gray)
+                                    .font(.callout)
+                            }
+                            HStack{
+                                Text("Last Name")
+                                Spacer()
+                                Text("Brož")
+                                    .foregroundColor(.gray)
+                                    .font(.callout)
+                            }
+                            HStack{
+                                Text("Email")
+                                Spacer()
+                                Text("JuliaSartori@student.fontys.nl")
+                                    .foregroundColor(.gray)
+                                    .font(.callout)
+                            }
+                            HStack{
+                                Text("City")
+                                Spacer()
+                                Text("Venlo")
+                                    .foregroundColor(.gray)
+                                    .font(.callout)
+                            }
+                            HStack{
+                                Text("Birthday")
+                                Spacer()
+                                Text("1/1/2015")
+                                    .foregroundColor(.gray)
+                                    .font(.callout)
+                            }
+                        }
+                        Section{
+                            //Added action button for user to interact with
+                            Button(action:  {
+                                    print("Edit Profile Information")
+                            }) {Text("Edit Profile Information")
+                            }
+                        }
                     }
-                    HStack{
-                        Text("Last Name")
-                        Spacer()
-                        Text("Brož")
-                            .foregroundColor(.gray)
-                            .font(.callout)
+                    Form {
+                        Section{
+                            Text("TestTest")
+                        }
                     }
-                    HStack{
-                        Text("Email")
-                        Spacer()
-                        Text("JuliaSartori@student.fontys.nl")
-                            .foregroundColor(.gray)
-                            .font(.callout)
-                    }
-                    HStack{
-                        Text("City")
-                        Spacer()
-                        Text("Venlo")
-                            .foregroundColor(.gray)
-                            .font(.callout)
-                    }
-                    HStack{
-                        Text("Birthday")
-                        Spacer()
-                        Text("1/1/2015")
-                            .foregroundColor(.gray)
-                            .font(.callout)
-                    }
+                
                 }
-                Section{
-                    //Added action button for user to interact with
-                    Button(action:  {
-                            print("Edit Profile Information")
-                    }) {Text("Edit Profile Information")
-                    }
-                }
+                .tabViewStyle(PageTabViewStyle())
             }
+            
+            
         }
     }
 }

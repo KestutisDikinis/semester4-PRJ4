@@ -11,30 +11,77 @@ struct ServerMessage: Decodable{
     let res, message: String
 }
 
+private struct httpProfile: Decodable{
+    var USR_NAME, FIRSTNAME, LASTNAME, PASS, EMAIL: String
+}
+import UIKit
+
 public class HttpHandler {
     
-    func signUp(username: String, password: String, email: String, firstname: String, lastname: String, 👁: String) -> Bool {
+    func testSign() -> Void {
+        let url = URL(string: "http://localhost:3000/user-profiles")!
         
-        guard let requestURL =  URL(string:  👁) else {return false}
-        
-        let body: [String: String] = ["USR_NAME": username, "PASS":password, "EMAIL": email, "FIRSTNAME":firstname, "LASTNAME":lastname ]
-        let finalBody = try! JSONSerialization.data(withJSONObject: body)
-        
-        var request = URLRequest(url: requestURL)
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.httpBody  = finalBody
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-                   guard let data = data else { return }
-                   let resData = try! JSONDecoder().decode(ServerMessage.self, from: data)
-                   
-                   if resData.res == "correct" {
-                       DispatchQueue.main.async {
-                           
-                       }
-                   }
-               }.resume()
-        return true
+        let body: [String: String] = ["USR_NAME": "username", "PASS":"password", "EMAIL": "email", "FIRSTNAME":"firstname", "LASTNAME":"lastname" ]
+        
+//        let body: [String: String] = ["USR_NAME": username, "PASS":password, "EMAIL": email, "FIRSTNAME":firstname, "LASTNAME":lastname ]
+        
+        let finalBody = try! JSONSerialization.data(withJSONObject: body)
+        
+        request.httpBody = finalBody
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data {
+                
+                if let profile = try? JSONDecoder().decode([httpProfile].self, from: data){
+                    print(profile)
+                } else {
+                    print(response)
+                }
+                print("Success")
+            } else if let error = error {
+                print("HTTP Request failed \(error)")
+                print("WHAT THE HELL IS GOING ON=!")
+            }
+            
+        }
+        task.resume()
+        
+    }
+    
+    func signUp(username: String, password: String, email: String, firstname: String, lastname: String, url: String) -> Void {
+        let url = URL(string: "http://localhost:3000/user-profiles")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+//        let body: [String: String] = ["USR_NAME": "username", "PASS":"password", "EMAIL": "email", "FIRSTNAME":"firstname", "LASTNAME":"lastname" ]
+        
+        let body: [String: String] = ["USR_NAME": username, "PASS":password, "EMAIL": email, "FIRSTNAME":firstname, "LASTNAME":lastname ]
+        
+        let finalBody = try! JSONSerialization.data(withJSONObject: body)
+        
+        request.httpBody = finalBody
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data {
+                
+                if let profile = try? JSONDecoder().decode([httpProfile].self, from: data){
+                    print(profile)
+                } else {
+                    print(response)
+                }
+                print("Success")
+            } else if let error = error {
+                print("HTTP Request failed \(error)")
+                print("WHAT THE HELL IS GOING ON=!")
+            }
+            
+        }
+        task.resume()
     }
 }

@@ -56,17 +56,25 @@ struct Registration: View {
                 }
                 .toggleStyle(SwitchToggleStyle(tint: Color.orange))
             }
-            /*Button(action:
-            ) {
-                Text("Sign-Up!")
-                .foregroundColor(Color.white)
-                .padding(12)
-                .background(Color.orange)
-            }*/
-            Button(action: {handler.signUp(username: username, password: password, email: email, firstname: fname, lastname: lname, 👁: "localhost:3000/createuserprofiles")}) {
-                Text("Sign me up!")
+            Button(action: {handler.signUp(username: username, password: password, email: email, firstname: fname, lastname: lname, url: "https://localhost:3000/createUserProfiles")}) {
+                Text("Sign me Up!")
+                        .fontWeight(.bold)
+                        .font(.title)
+                        .foregroundColor(.orange)
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.orange, lineWidth: 5)
+                        )
             }
             .cornerRadius(12)
+//            .disabled(terms == false && !HelpFunctions().passwordValidation(password: password) && password != passwordRepeat)
+            .disabled(terms == false && HelpFunctions().passwordValidation(password: password) == false)
+
+//            Button(action: {handler.testSign()}) {
+//                Text("Sign me up!")
+//            }
+//            .cornerRadius(12)
         }
         .padding(36)
         

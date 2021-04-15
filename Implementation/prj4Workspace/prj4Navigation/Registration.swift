@@ -15,7 +15,9 @@ struct Registration: View {
     @State private var fname:
         String = ""
     @State private var lname: String = ""
-    @State private var terms = false
+    @State private var terms: Bool = false
+    
+    private var handler = HttpHandler()
     
     var body: some View {
         
@@ -54,11 +56,15 @@ struct Registration: View {
                 }
                 .toggleStyle(SwitchToggleStyle(tint: Color.orange))
             }
-            Button(action: {Text("Hello There")}) {
+            /*Button(action:
+            ) {
                 Text("Sign-Up!")
                 .foregroundColor(Color.white)
                 .padding(12)
                 .background(Color.orange)
+            }*/
+            Button(action: {handler.signUp(username: username, password: password, email: email, firstname: fname, lastname: lname, 👁: "localhost:3000/createuserprofiles")}) {
+                Text("Sign me up!")
             }
             .cornerRadius(12)
         }

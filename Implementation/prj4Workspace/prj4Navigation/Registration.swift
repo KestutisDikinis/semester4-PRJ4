@@ -15,7 +15,7 @@ struct Registration: View {
     @State private var fname:
         String = ""
     @State private var lname: String = ""
-    @State private var terms: Bool = false
+    @State var terms: Bool = false
     
     private var handler = HttpHandler()
     
@@ -51,6 +51,25 @@ struct Registration: View {
                 SecureField("Passwordrepeat", text: $passwordRepeat)
                     .border(Color.orange)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                if(HelpFunctions().passwordValidation(password: password) == false){
+                VStack(alignment: .leading){
+                    Text("Your password follow the following rules:")
+                        .foregroundColor(Color.red)
+                    Text("Minimum length of 8")
+                        .foregroundColor(Color.red)
+                    Text("Contains lower and capital letters")
+                        .foregroundColor(Color.red)
+                    Text("Contains at least one special character")
+                        .foregroundColor(Color.red)
+                }
+                .padding(6.0)
+                .border(/*@START_MENU_TOKEN@*/Color.red/*@END_MENU_TOKEN@*/)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .cornerRadius(12)
+                
+                
+                }
                 Toggle(isOn: $terms) {
                     Text("Hereby I accept the Terms of Service")
                 }
@@ -68,13 +87,8 @@ struct Registration: View {
                         )
             }
             .cornerRadius(12)
-//            .disabled(terms == false && !HelpFunctions().passwordValidation(password: password) && password != passwordRepeat)
-            .disabled(terms == false && HelpFunctions().passwordValidation(password: password) == false)
+            .disabled(self.terms && HelpFunctions().passwordValidation(password: password) == true)
 
-//            Button(action: {handler.testSign()}) {
-//                Text("Sign me up!")
-//            }
-//            .cornerRadius(12)
         }
         .padding(36)
         

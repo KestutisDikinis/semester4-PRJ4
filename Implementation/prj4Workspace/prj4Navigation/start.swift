@@ -14,7 +14,7 @@ struct start: View {
             Text("Ready to bike?")
             NavigationView{
                 VStack{
-                    NavigationLink(destination: Registration()) {
+                    NavigationLink(destination: Login()) {
                     Text("Login")
                         .foregroundColor(Color.white)
                         .padding(12)

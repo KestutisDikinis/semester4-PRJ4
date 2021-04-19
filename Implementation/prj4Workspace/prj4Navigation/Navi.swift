@@ -1,10 +1,11 @@
 //
-//  NaviView.swift
+//  Navi.swift
 //  prj4Navigation
 //
 //  Created by Julia Sartori on 14.04.21.
 //
 
+import Foundation
 import SwiftUI
 import UIKit
 import MapKit
@@ -12,12 +13,12 @@ import CoreLocation
 
 
 
-struct NaviView: View {
+struct Navi: View {
     
 //Version 1:
     
 
-     @State var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 48.025624, longitude: 11.084795), latitudinalMeters: 10000, longitudinalMeters: 10000)
+     @State var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5085300, longitude: -0.1257400), latitudinalMeters: 10000, longitudinalMeters: 10000)
     @State var tracking : MapUserTrackingMode = .follow
     @State var manager = CLLocationManager()
     @StateObject var managerDelegate = locationDelegate()
@@ -68,9 +69,9 @@ class locationDelegate : NSObject, ObservableObject, CLLocationManagerDelegate{
 
     
 //Version 2:
-    
-/*    var body : some View{
-        NaviView()
+/*
+   var body : some View{
+        Navi()
     }
 }
 
@@ -111,14 +112,16 @@ class locationDelegate : NSObject, ObservableObject, CLLocationManagerDelegate{
 */
 
 //Version3
-
-/*class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+/*
+var body : some View{
+        Navi()
+     }
+ }
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
 
     let locationManager = CLLocationManager()
-
-
 
 
     override func viewDidLoad() {
@@ -136,10 +139,6 @@ class locationDelegate : NSObject, ObservableObject, CLLocationManagerDelegate{
     self.mapView.showsUserLocation = true
 
     }
-
-
-
-
 
 
     override func didReceiveMemoryWarning() {
@@ -167,11 +166,12 @@ class locationDelegate : NSObject, ObservableObject, CLLocationManagerDelegate{
     }
 
 }
- */
 
-    struct NaviView_Previews: PreviewProvider {
+*/
+
+    struct Navi_Previews: PreviewProvider {
         static var previews: some View {
-            NaviView()
+            Navi()
         }
     }
     

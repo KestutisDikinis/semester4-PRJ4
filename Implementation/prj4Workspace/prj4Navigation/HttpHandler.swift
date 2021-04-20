@@ -84,4 +84,33 @@ public class HttpHandler {
         }
         task.resume()
     }
+    
+    //will not work as cant get my username
+    func logIn(usernameEmail: String, password: String, url: String) -> Void {
+        let url = URL(string: "http://localhost:3000/user-profiles")
+        guard let requestUrl = url else {fatalError()}
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let body: [String: String] = ["USR_NAME": usernameEmail, "PASS":password ]
+        let finalBody = try! JSONSerialization.data(withJSONObject: body)
+        request.httpBody = finalBody
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data {
+                
+                if let profile = try? JSONDecoder().decode([httpProfile].self, from: data){
+                    print(profile)
+                } else {
+                    print(response)
+                }
+                print("Success")
+            } else if let error = error {
+                print("I do not understand wtf is this \(error)")
+            }
+            
+        }
+        task.resume()
+    }
 }

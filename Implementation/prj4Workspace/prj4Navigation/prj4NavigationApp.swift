@@ -6,7 +6,7 @@ import SwiftUI
 struct prj4NavigationApp: App {
     var body: some Scene {
         WindowGroup {
-            start()
+            Navi()
         }
     }
 }

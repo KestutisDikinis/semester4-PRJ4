@@ -11,6 +11,7 @@ struct Login: View{
     
     @State private var usernameEmail: String = ""
     @State private var password: String = ""
+    private var handler = HttpHandler()
     
     var body: some View {
         VStack{
@@ -24,11 +25,11 @@ struct Login: View{
                 SecureField("Password", text: $password)
                     .border(Color(red: 236/255, green: 78/255, blue: 32/255))
             }
-            Button(action: {Text("Hello There")}) {
+            Button(action: {handler.logIn(usernameEmail: usernameEmail, password: password, url: "http://localhost:3000/user-profiles")}) {
                 Text("Login!")
-                .foregroundColor(Color.white)
-                .padding(12)
-                .background(Color(red: 236/255, green: 78/255, blue: 32/255))
+                    .fontWeight(.bold)
+                    .font(.title)
+                .foregroundColor(Color(red: 236/255, green: 78/255, blue: 32/255))
             }
             .cornerRadius(12)
         }

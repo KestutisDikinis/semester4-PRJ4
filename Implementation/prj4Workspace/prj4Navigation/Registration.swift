@@ -75,7 +75,7 @@ struct Registration: View {
                 }
                 .toggleStyle(SwitchToggleStyle(tint: Color.orange))
             }
-            Button(action: {handler.signUp(username: username, password: password, email: email, firstname: fname, lastname: lname, url: "https://localhost:3000/createUserProfiles")}) {
+            Button(action: {handler.signUp(username: username, password: password, email: email, firstname: fname, lastname: lname)}) {
                 Text("Sign me Up!")
                         .fontWeight(.bold)
                         .font(.title)

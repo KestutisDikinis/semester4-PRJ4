@@ -52,7 +52,7 @@ public class HttpHandler {
         
     }
     
-    func signUp(username: String, password: String, email: String, firstname: String, lastname: String, url: String) -> Void {
+    func signUp(username: String, password: String, email: String, firstname: String, lastname: String) -> Void {
         let url = URL(string: "http://localhost:3000/user-profiles")!
         
         var request = URLRequest(url: url)
@@ -74,7 +74,7 @@ public class HttpHandler {
                     print(profile)
                 } else {
                     print(response)
-                }
+                }            
                 print("Success")
             } else if let error = error {
                 print("HTTP Request failed \(error)")

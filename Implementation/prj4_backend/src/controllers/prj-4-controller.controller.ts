@@ -23,6 +23,7 @@ import {
 } from '@loopback/rest';
 import {UserProfile} from '../models';
 import {UserProfileRepository} from '../repositories';
+import {genSalt, hash} from "bcryptjs";
 
 export class Prj4ControllerController {
   constructor(
@@ -48,8 +49,9 @@ export class Prj4ControllerController {
     })
     userProfile: Omit<UserProfile, 'ID'>,
   ): Promise<UserProfile> {
-    var CryptoJS = require("crypto-js");
-    userProfile.PASS = CryptoJS.SHA256(userProfile.PASS);
+    //var CryptoJS = require("crypto-js");
+    //userProfile.PASS = CryptoJS.SHA256(userProfile.PASS);
+    userProfile.PASS = await hash(userProfile.PASS, await genSalt());
     return this.userProfileRepository.create(userProfile);
   }
 

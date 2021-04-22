@@ -12,10 +12,10 @@ import {MySequence} from './sequence';
 import {AuthenticationComponent} from '@loopback/authentication';
 import {
   JWTAuthenticationComponent,
-  SECURITY_SCHEME_SPEC,
   UserServiceBindings,
 } from '@loopback/authentication-jwt';
 import {DbDataSource} from './datasources';
+import {UserProfileService, UserProfileServiceBindings} from "./services/user-profile.service";
 export {ApplicationConfig};
 
 export class Prj4BackendApplication extends BootMixin(
@@ -52,5 +52,6 @@ export class Prj4BackendApplication extends BootMixin(
     this.component(JWTAuthenticationComponent);
     // Bind datasource
     this.dataSource(DbDataSource, UserServiceBindings.DATASOURCE_NAME);
+    this.bind(UserProfileServiceBindings.USER_PROFILE_SERVICE).toClass(UserProfileService);
   }
 }

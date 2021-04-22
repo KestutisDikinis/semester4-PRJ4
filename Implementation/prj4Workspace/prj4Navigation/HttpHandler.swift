@@ -87,7 +87,7 @@ public class HttpHandler {
     
     //will not work as cant get my username
     func logIn(usernameEmail: String, password: String, url: String) -> Void {
-        let url = URL(string: "http://localhost:3000/user-profiles")
+        let url = URL(string: "http://localhost:3000/signup")
         guard let requestUrl = url else {fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -95,7 +95,6 @@ public class HttpHandler {
         
         let body: [String: String] = ["USR_NAME": usernameEmail, "PASS":password ]
         let finalBody = try! JSONSerialization.data(withJSONObject: body)
-        request.httpBody = finalBody
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {

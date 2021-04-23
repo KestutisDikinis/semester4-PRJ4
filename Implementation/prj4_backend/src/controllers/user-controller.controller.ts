@@ -82,7 +82,6 @@ export class UserController {
   async login(
       @requestBody(CredentialsRequestBody) credentials: Credentials,
   ): Promise<{token: string}> {
-    console.log("IMHEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
     // ensure the user exists, and the password is correct
     const user = await this.userService.verifyCredentials(credentials);
     // convert a User object into a UserProfile object (reduced set of properties)

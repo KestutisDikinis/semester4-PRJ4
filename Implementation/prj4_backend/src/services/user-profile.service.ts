@@ -22,7 +22,6 @@ export class UserProfileService implements UserService<UserProfile, Credentials>
     ) {}
 
     async verifyCredentials(credentials: Credentials): Promise<UserProfile> {
-        console.log("IM HERE")
         const invalidCredentialsError = 'Invalid email or password.';
 
         const foundUser = await this.userRepository.findOne({

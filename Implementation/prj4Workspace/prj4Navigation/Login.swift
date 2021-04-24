@@ -25,7 +25,7 @@ struct Login: View{
                 SecureField("Password", text: $password)
                     .border(Color(red: 236/255, green: 78/255, blue: 32/255))
             }
-            Button(action: {handler.logIn(usernameEmail: usernameEmail, password: password)}) {
+            Button(action: {let id = handler.logIn(usernameEmail: usernameEmail, password: password)}) {
                 Text("Login!")
                     .fontWeight(.bold)
                     .font(.title)

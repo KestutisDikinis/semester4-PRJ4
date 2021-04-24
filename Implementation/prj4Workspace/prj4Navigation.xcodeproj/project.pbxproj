@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FB582892634BBD400C86216 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = 2FB582882634BBD400C86216 /* SwiftJWT */; };
 		2FE8F9B026270E9B00F2F8B9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8F9AF26270E9B00F2F8B9 /* Login.swift */; };
 		9714DCC02626C78B00AABB21 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714DCBE2626C78A00AABB21 /* Registration.swift */; };
 		9714DCC12626C78B00AABB21 /* start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714DCBF2626C78B00AABB21 /* start.swift */; };
@@ -66,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FB582892634BBD400C86216 /* SwiftJWT in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +169,9 @@
 			dependencies = (
 			);
 			name = prj4Navigation;
+			packageProductDependencies = (
+				2FB582882634BBD400C86216 /* SwiftJWT */,
+			);
 			productName = "Tab-Bar";
 			productReference = AD1057482506826A00100993 /* prj4Navigation.app */;
 			productType = "com.apple.product-type.application";
@@ -238,6 +243,9 @@
 				Base,
 			);
 			mainGroup = AD10573F2506826A00100993;
+			packageReferences = (
+				2FB582872634BBD400C86216 /* XCRemoteSwiftPackageReference "Swift-JWT" */,
+			);
 			productRefGroup = AD1057492506826A00100993 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -602,6 +610,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2FB582872634BBD400C86216 /* XCRemoteSwiftPackageReference "Swift-JWT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/Swift-JWT.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.6.200;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2FB582882634BBD400C86216 /* SwiftJWT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FB582872634BBD400C86216 /* XCRemoteSwiftPackageReference "Swift-JWT" */;
+			productName = SwiftJWT;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AD1057402506826A00100993 /* Project object */;
 }

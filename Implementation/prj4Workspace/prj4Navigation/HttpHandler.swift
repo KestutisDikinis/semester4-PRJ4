@@ -97,15 +97,88 @@ public class HttpHandler {
         
         let finalBody = try! JSONSerialization.data(withJSONObject: body)
         
+        
         request.httpBody = finalBody
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                    print("Response data string:\n \(dataString)")
+                globalToken = dataString
+                print("Response data string:\n \(dataString)")
+                
                 } else if let error = error {
                 print("This should not happen \(error)")
             }
         }
+        print(globalToken)
+        
         task.resume()
+        whoIam(token: globalToken)
         return false
     }
+    
+    
+    //funcion to access profile information
+    //retruns user ID
+    //can be used for profile data
+    
+    
+    func whoIam(token: String) -> Int {
+        let url = URL(string: "http://localhost:3000/whoAmI")
+        guard let requestUrl = url else {fatalError()}
+        var request = URLRequest(url: requestUrl)
+        request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+            
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+            }
+            
+            // Convert HTTP Response Data to a simple String
+            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                print("Response data string:\n \(dataString)")
+            }
+            
+        }
+        return -1
+    }
+    
+    func login2(usernameEmail: String, password: String) -> Void {
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5IiwibmFtZSI6Iktlc3Rva2FzIiwiZW1haWwiOiJLZXN0b2thc0BnbWFpbC5jb20iLCJpYXQiOjE2MTkyOTYxODEsImV4cCI6MTYxOTMxNzc4MX0.tmnghpttLJlgK1-PcrgQ9WcwESSA2lwcmfFBM2TGbnY"
+        let url = URL(string: "http://localhost:3000/whoAmI")!
+
+        // prepare json data
+
+        // create post request
+        var request = URLRequest(url: url)
+        // insert json data to the request
+        request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+            
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+            }
+            
+            // Convert HTTP Response Data to a simple String
+            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                print("Response data string:\n \(dataString)")
+            }
+        }
+
+        task.resume()
+    }
+    
+
 }

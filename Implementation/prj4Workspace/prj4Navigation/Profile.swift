@@ -7,12 +7,21 @@
 
 import SwiftUI
 
+
+
 //container view that shows all the content
-struct profileTest: View {
+struct profile: View {
     
     @State var selection:Int = 0
     
+    //booleans for modifying the button background color
+    @State var profileSelected = false
+    @State var RoutesSelected = false
+    @State var PointsSelected = false
+    
+    
     var body: some View {
+        
         //Vertical container that holds all elements
         VStack{
             Image("mark")
@@ -32,14 +41,56 @@ struct profileTest: View {
                 .font(.system(size: 15, design: .default))
                 .frame(alignment: .center);
             
-            Text("Nav. bar placeholder")
+            //Text("Nav. bar placeholder")
+            HStack{
+                
+                Button(action: {
+                    print("Profile Information")
+                    selection = 1
+                }) {
+                    Text("Profile Information")
+                        .padding(10.0)
+                        .offset(x: 10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10.0)
+                                .offset(x: 10)
+                                .stroke(lineWidth: 1.0)
+                                .shadow(color: .blue, radius: 0.0)
+                        )
+                    
+                }
+                
+                Button(action: {
+                    print("Route History")
+                    selection = 2
+                }) {
+                    Text("Route History")
+                        .fontWeight(.bold)
+                        .padding(7.0)
+                       // .background(Color(hex: 0xF2F6F7))
+                        .cornerRadius(10)
+                    
+                   
+                    
+                        //.overlay(
+                          //  RoundedRectangle(cornerRadius: 10.0)
+                          //     .stroke(lineWidth: 1.0)
+                                
+                                //.shadow(color: .blue, radius: 0.0)
+                       //)
+                    //if profileSelected == true {
+                      //  .background(Color(hex: 0xF2F6F7))
+                   // }
+                }
+                
+            }
             
             
             //for swiping between pages functionality
             ZStack{
                 VStack{
                     //PLACEHOLDER FOR selection parameter for the nav bar to select the correct page
-                    TabView(){
+                    TabView(selection: $selection){
                         //Embedded form for styling the HStacks
                         //Profile info section
                         Form {
@@ -90,6 +141,7 @@ struct profileTest: View {
                                 }
                             }
                         }
+                        .tag(1)
                         //History group
                         Form {
                             //Section name
@@ -148,18 +200,12 @@ struct profileTest: View {
                                 }
                             }
                         }
+                        .tag(2)
                     
                     }
                     .tabViewStyle(PageTabViewStyle())
                     
-                    //NOT WORKING
-                    Button(action: {
-                        withAnimation{
-                            selection = 1
-                        }
-                    }) {
-                        Text("go home")
-                    }
+                   
                 }
                 }
                
@@ -168,14 +214,25 @@ struct profileTest: View {
         }
     }
 }
+//extension for letting us import our own hex colours
+extension Color {
+    init(hex: UInt, alpha: Double = 1) {
+        self.init(
+            .sRGB,
+            red: Double((hex >> 16) & 0xff) / 255,
+            green: Double((hex >> 08) & 0xff) / 255,
+            blue: Double((hex >> 00) & 0xff) / 255,
+            opacity: alpha
+        )
+    }
+}
 
 //Renders the code avove in a preview window
 struct Profile_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            profileTest()
-            profileTest()
-                .preferredColorScheme(.dark)
+            profile()
+                
         }
     }
 }

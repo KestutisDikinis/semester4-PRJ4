@@ -103,15 +103,14 @@ public class HttpHandler {
             if let data = data, let dataString = String(data: data, encoding: .utf8) {
                 globalToken = dataString
                 print("Response data string:\n \(dataString)")
-                
+                print(globalToken)
                 } else if let error = error {
                 print("This should not happen \(error)")
             }
         }
-        print(globalToken)
-        
-        task.resume()
         whoIam(token: globalToken)
+        task.resume()
+        
         return false
     }
     
@@ -125,6 +124,7 @@ public class HttpHandler {
         let url = URL(string: "http://localhost:3000/whoAmI")
         guard let requestUrl = url else {fatalError()}
         var request = URLRequest(url: requestUrl)
+        print("IM HeERE")
         request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in

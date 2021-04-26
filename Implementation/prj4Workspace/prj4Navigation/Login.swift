@@ -48,7 +48,7 @@ struct Login: View{
                     .foregroundColor(.white)
                     .padding()
                     .frame(width: 300, height: 50)
-                    .background(Color.green)
+                    .background(Color(red: 236/255, green: 78/255, blue: 32/255))
                     .cornerRadius(15.0)
                     .shadow(radius: 10.0, x: 20, y: 10)
             }.padding(.top, 50)
@@ -56,7 +56,7 @@ struct Login: View{
             Spacer()
             HStack(spacing: 0) {
                 Text("Don't have an account? ")
-                NavigationLink(destination: Registration()) {
+                Button(action: {}) {
                     Text("Sign Up")
                         .foregroundColor(.black)
                 }

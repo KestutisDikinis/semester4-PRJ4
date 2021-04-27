@@ -15,7 +15,8 @@ struct Registration: View {
     @State private var fname:
         String = ""
     @State private var lname: String = ""
-    @State var terms: Bool = false
+    @State private var terms: Bool = false
+    @State private var registrationState: String = "opening"
     
     private var handler = HttpHandler()
     
@@ -75,7 +76,7 @@ struct Registration: View {
                 }
                 .toggleStyle(SwitchToggleStyle(tint: Color.orange))
             }
-            Button(action: {handler.signUp(username: username, password: password, email: email, firstname: fname, lastname: lname)}) {
+            Button(action: {registrationState = handler.signUp(username: username, password: password, email: email, firstname: fname, lastname: lname)}) {
                 Text("Sign me Up!")
                         .fontWeight(.bold)
                         .font(.title)
@@ -92,7 +93,9 @@ struct Registration: View {
         }
         .padding(36)
         
-        
+        if (registrationState == "success"){
+            start()
+        }
     }
 }
 

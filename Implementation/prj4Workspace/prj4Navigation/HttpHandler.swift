@@ -52,15 +52,15 @@ public class HttpHandler {
         
     }
     
-    func signUp(username: String, password: String, email: String, firstname: String, lastname: String) -> Void {
+    func signUp(username: String, password: String, email: String, firstname: String, lastname: String) -> String {
         let url = URL(string: "http://localhost:3000/user-profiles")!
+        
+        var responseMessage = "open"
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-//        let body: [String: String] = ["USR_NAME": "username", "PASS":"password", "EMAIL": "email", "FIRSTNAME":"firstname", "LASTNAME":"lastname" ]
-        
+
         let body: [String: String] = ["USR_NAME": username, "PASS":password, "EMAIL": email, "FIRSTNAME":firstname, "LASTNAME":lastname ]
         
         let finalBody = try! JSONSerialization.data(withJSONObject: body)
@@ -72,17 +72,22 @@ public class HttpHandler {
                 
                 if let profile = try? JSONDecoder().decode([httpProfile].self, from: data){
                     print(profile)
+                    responseMessage="success"
+                    
                 } else {
                     print(response)
                 }            
                 print("Success")
+                
             } else if let error = error {
                 print("HTTP Request failed \(error)")
                 print("WHAT THE HELL IS GOING ON=!")
+                responseMessage = "error"
             }
             
         }
         task.resume()
+        return responseMessage
     }
     
     func logIn(usernameEmail: String, password: String) -> Bool {

@@ -45,8 +45,6 @@ struct Profile: View {
             ScrollView(.horizontal){
                 HStack{
                     
-                    
-                
                     Button(action: {
                         print("Profile Information")
                         selection = 1
@@ -68,16 +66,12 @@ struct Profile: View {
                     
                     Button(action: {
                         print("Points")
-                        selection = 2
+                        selection = 3
                     }) {
                         Text("Points")
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     }
                     .buttonStyle(MyButtonStyle())
-                         
-                        
-                       
-                        
                             //.overlay(
                               //  RoundedRectangle(cornerRadius: 10.0)
                               //     .stroke(lineWidth: 1.0)
@@ -213,7 +207,60 @@ struct Profile: View {
                             }
                         }
                         .tag(2)
-                    
+                        
+                        //Points group
+                        Form {
+                            VStack{
+                                Text("placeholder")
+                                Text("placeholder")
+                                Text("placeholder")
+                                Text("placeholder")
+                                Text("placeholder")
+                                Text("placeholder")
+                                Text("placeholder")
+                                Text("placeholder")
+                                Text("placeholder")
+                                Text("placeholder")
+                            }
+                            
+                            //Sections
+                            Section(header: Text("Cycling")){
+                                //Spacing between each route entry
+                                
+                                    HStack{
+                                        Text("Completed routes")
+                                        Spacer()
+                                        Text("56235")
+                                            .foregroundColor(.gray)
+                                            .font(.callout)
+                                    }
+                                    HStack{
+                                        Text("Distance traveled")
+                                        Spacer()
+                                        Text("34673")
+                                            .foregroundColor(.gray)
+                                            .font(.callout)
+                                    }
+                            }
+                            Section(header: Text("Activity")){
+                                HStack{
+                                    Text("Posted reviews")
+                                    Spacer()
+                                    Text("975")
+                                        .foregroundColor(.gray)
+                                        .font(.callout)
+                                }
+                                HStack{
+                                    Text("Created routes")
+                                    Spacer()
+                                    Text("7224")
+                                        .foregroundColor(.gray)
+                                        .font(.callout)
+                                }
+                            }
+                            }
+                        .tag(3)
+                        
                     }
                     .tabViewStyle(PageTabViewStyle())
                     

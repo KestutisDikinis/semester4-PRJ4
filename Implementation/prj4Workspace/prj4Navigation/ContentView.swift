@@ -32,7 +32,7 @@ struct Home : View {
     
     var body: some View{
         
-        VStack(spacing: 0){
+        VStack(){
             
             GeometryReader{_ in
                 
@@ -40,11 +40,12 @@ struct Home : View {
                     Text("Rankings")
                     .opacity(selectedTab == "Rankings" ? 1 : 0)
                     
-                    Text("Navigation hi")
+                    Navi()
                         .opacity(selectedTab == "Navigation" ? 1 : 0)
                     
-                    Text("Profile")
+                    Profile()
                         .opacity(selectedTab == "Profile" ? 1 : 0)
+                        //.offset(y: -50)
                 }
             }
             .onChange(of: selectedTab) { (_) in

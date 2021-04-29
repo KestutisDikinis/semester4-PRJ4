@@ -10,14 +10,14 @@ import SwiftUI
 
 
 //container view that shows all the content
-struct profile: View {
+struct Profile: View {
     
     @State var selection:Int = 0
     
     //booleans for modifying the button background color
     @State var profileSelected = false
-    @State var RoutesSelected = false
-    @State var PointsSelected = false
+    @State var routesSelected = false
+    @State var pointsSelected = false
     
     
     var body: some View {
@@ -231,7 +231,7 @@ extension Color {
 struct Profile_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            profile()
+            Profile()
                 
         }
     }

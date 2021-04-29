@@ -49,26 +49,21 @@ struct Profile: View {
                     selection = 1
                 }) {
                     Text("Profile Information")
-                        .padding(10.0)
-                        .offset(x: 10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10.0)
-                                .offset(x: 10)
-                                .stroke(lineWidth: 1.0)
-                                .shadow(color: .blue, radius: 0.0)
-                        )
-                    
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 }
+                .offset(y: 0)
+                .buttonStyle(MyButtonStyle())
                 
                 Button(action: {
                     print("Route History")
                     selection = 2
                 }) {
                     Text("Route History")
-                        .fontWeight(.bold)
-                        .padding(7.0)
-                       // .background(Color(hex: 0xF2F6F7))
-                        .cornerRadius(10)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                }
+                .offset(y: 0)
+                .buttonStyle(MyButtonStyle())
+                     
                     
                    
                     
@@ -81,7 +76,7 @@ struct Profile: View {
                     //if profileSelected == true {
                       //  .background(Color(hex: 0xF2F6F7))
                    // }
-                }
+                
                 
             }
             
@@ -139,6 +134,7 @@ struct Profile: View {
                                         print("Edit Profile Information")
                                 }) {Text("Edit Profile Information")
                                 }
+                                
                             }
                         }
                         .tag(1)
@@ -215,6 +211,10 @@ struct Profile: View {
     }
 }
 //extension for letting us import our own hex colours
+// 4E64E1 blue
+// 2E2B28 tint black
+// EC4E20 blue
+// F7F9FA tint white
 extension Color {
     init(hex: UInt, alpha: Double = 1) {
         self.init(
@@ -226,6 +226,31 @@ extension Color {
         )
     }
 }
+
+//styling configuration for the nav buttons that are applied
+struct MyButtonStyle: ButtonStyle {
+
+  func makeBody(configuration: Self.Configuration) -> some View {
+    configuration.label
+      .padding(5)
+      
+      .foregroundColor(.blue)
+        .background(configuration.isPressed ? Color(hex: 0x2E2B28) : Color.white)
+      .cornerRadius(10.0)
+    
+    
+        
+        //.offset(x: 10)
+        //.overlay(
+          //  RoundedRectangle(cornerRadius: 10.0)
+            //    .offset(x: 10)
+              //  .stroke(lineWidth: 1.0)
+                //.shadow(color: .blue, radius: 0.0)
+        //)
+  }
+
+}
+
 
 //Renders the code avove in a preview window
 struct Profile_Previews: PreviewProvider {

@@ -41,44 +41,60 @@ struct Profile: View {
                 .font(.system(size: 15, design: .default))
                 .frame(alignment: .center);
             
-            //Text("Nav. bar placeholder")
-            HStack{
-                
-                Button(action: {
-                    print("Profile Information")
-                    selection = 1
-                }) {
-                    Text("Profile Information")
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                }
-                .offset(y: 0)
-                .buttonStyle(MyButtonStyle())
-                
-                Button(action: {
-                    print("Route History")
-                    selection = 2
-                }) {
-                    Text("Route History")
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                }
-                .offset(y: 0)
-                .buttonStyle(MyButtonStyle())
-                     
+            //to swipe to not visible nav.bar sections
+            ScrollView(.horizontal){
+                HStack{
                     
-                   
                     
-                        //.overlay(
-                          //  RoundedRectangle(cornerRadius: 10.0)
-                          //     .stroke(lineWidth: 1.0)
-                                
-                                //.shadow(color: .blue, radius: 0.0)
-                       //)
-                    //if profileSelected == true {
-                      //  .background(Color(hex: 0xF2F6F7))
-                   // }
                 
-                
+                    Button(action: {
+                        print("Profile Information")
+                        selection = 1
+                    }) {
+                        Text("Profile Information")
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    }
+                    .offset(y: 0)
+                    .buttonStyle(MyButtonStyle())
+                    
+                    Button(action: {
+                        print("Route History")
+                        selection = 2
+                    }) {
+                        Text("Route History")
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    }
+                    .buttonStyle(MyButtonStyle())
+                    
+                    Button(action: {
+                        print("Points")
+                        selection = 2
+                    }) {
+                        Text("Points")
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    }
+                    .buttonStyle(MyButtonStyle())
+                         
+                        
+                       
+                        
+                            //.overlay(
+                              //  RoundedRectangle(cornerRadius: 10.0)
+                              //     .stroke(lineWidth: 1.0)
+                                    
+                                    //.shadow(color: .blue, radius: 0.0)
+                           //)
+                        //if profileSelected == true {
+                          //  .background(Color(hex: 0xF2F6F7))
+                       // }
+                    
+                    Spacer()
+                }
+                //for the nav buttons to have more padding from the left
+                .padding(.leading)
             }
+            
+            
             
             
             //for swiping between pages functionality

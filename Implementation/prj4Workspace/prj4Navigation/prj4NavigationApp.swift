@@ -8,7 +8,7 @@ var globalToken = String()
 struct prj4NavigationApp: App {
     var body: some Scene {
         WindowGroup {
-            Profile()
+            ContentView()
         }
     }
 }
